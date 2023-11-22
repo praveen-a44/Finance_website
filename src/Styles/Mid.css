@@ -1,0 +1,318 @@
+.card_container{
+    justify-content: space-evenly;
+    display: flex;
+    background-color: white;
+    padding: 90px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+.cards_mid{
+    width: 20%;
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow:  -7px 0px 1px 0px #8748F8;
+    box-shadow: h-offset v-offset blur spread color;
+    padding: 10px;
+    position: relative;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    filter: drop-shadow(0 0 0.25rem rgb(239, 238, 238));
+}
+
+.cards_mid:hover{
+    box-sizing: none;
+    transform: scale(0.95);
+    box-shadow: none;
+    box-shadow: 2px 2px 5px rgb(230, 230, 230);
+    filter: none;
+}
+
+.cards_mid >h3{
+    margin-top: 30px !important;
+    font-family: 'Karla', sans-serif;
+    font-weight:600;
+
+}
+.cards_mid img{
+    width: 47px;
+    position: absolute;
+    top: 10% !important; 
+    left:13%;
+}
+.image_wrapper{
+    background-color: #d4edf2;
+    border-radius: 11px;
+    width: 67px;
+    height: 67px;
+    top:-37%;
+    left:70px;
+    position: absolute;
+}
+
+@media (max-width: 1200px) {
+    .cards_mid {
+        width: 48%; 
+    }
+}
+
+@media (max-width: 800px) {
+    .cards_mid {
+        margin-left:60px;
+        min-width: 200px;
+        
+    }
+    .card_container{
+        width: 100%;
+    }
+    .image_wrapper{
+         left:60px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){ 
+    .image_wrapper{
+        left: 93px;
+   }
+} 
+
+.spinner-border::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background-color:#8748F8;
+  }
+  
+#load_txt{
+    left: -10px;
+    position: relative;
+}
+
+.hr_line{
+    width: 70%;
+    position: relative;
+    top: 0px;
+    margin-bottom: 100px;
+    margin-top: -30px;
+    margin-left: 185px;
+    border-top: 3px dotted #8648f8b7;
+    border-radius: 5px;
+}
+.hr_line >img{
+    position: absolute;
+    left: 50%;
+    margin-top: -26px;
+}
+
+
+
+
+@media (max-width: 900px) {
+    .hr_line{
+        margin-left: 50px !important;
+        width: 80%;
+
+    }
+    .hr_line >img{
+        left: 45%;
+    }
+    .below_cards{
+        padding: 30px;
+        display:flex;
+    }
+    .left_part >img{
+        height: 200px;
+        width: 250px;
+        border-radius: 25px 80px !important;
+        top: -55px !important;
+        position: relative;
+        padding: 0px !important;
+    }
+    .right_part{
+        position: absolute;
+        top: 2050px;
+        padding: 20px;
+        left: 20px;
+    }
+    .Daily_facts_portion{
+        position:relative !important;
+        top:300px !important;
+        width: 100% !important;
+        height: 60vh !important;
+        display: flex;  
+        padding: 50px !important;      
+    }
+    .fact_part{
+        width:21rem!important; 
+        height: 50vh !important;
+        left: 50px !important;
+        position: absolute !important;
+        padding: 20px 30px !important;
+
+    }
+    
+
+  
+    #vertical_rule{
+        display: none;
+    }
+    .balance_card{
+        width: 21rem;
+        background: linear-gradient(to right, #8748F8, #8D4CF3, #8648f86d);
+        color: white;
+        padding: 20px;
+        position: relative !important;
+        left:50px !important;
+        top:100px !important;
+        border-radius: 20px;
+        position: absolute !important;
+        top:600px !important;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    }
+}
+.below_cards{
+    padding: 20px 90px;
+    display: flex;
+}
+.left_part >img{
+    border-radius: 45px 150px;
+    box-shadow: 2px 2px 11px #b0b0b0;
+    padding: 10px;
+}
+.right_part{
+    padding: 30px 50px;
+    font-family: 'Lobster Two', sans-serif;
+    color: #8748F8;
+}
+.right_part >h3{
+    line-height: 200%;
+    text-align: justify;
+    letter-spacing: 1.4px;
+    font-style: italic;
+    
+
+}
+.chat_btn{
+    padding: 10px 0px;
+}
+#chat{
+    font-family: 'Karla', sans-serif;
+    font-weight: 600;
+    border: none;
+    background-color:#8748F8;
+}
+#chat:hover{
+    opacity: 0.8;
+}
+.Daily_facts_portion{
+    justify-content: space-evenly;
+    display: flex;
+    background-color: white;
+    padding: 90px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.fact_part{
+    position: relative;
+    width: 260px;
+    height: 72vh;
+    padding: 25px;
+    right: 0px;
+    margin-right: 50px;
+    box-shadow: 4px 3px 20px rgb(225, 225, 225);
+    border: 1px solid #8648f884;
+    border-radius: 11px !important;
+}
+.fact_part:hover{
+    box-shadow: none;
+    transform: scale(0.92);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+::selection {
+    background: #bfffc4b3;
+}
+mark{
+    background-color: #ba95ff84 !important;
+
+}
+.image_wrapper1{
+   padding: 30px;
+   position: relative;
+    left:20px;
+}
+.fact_heading{
+  font-family: 'Monoton', sans-serif;
+  color:#000000;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  font-size: 25px;
+  font-weight: 100;
+  font-variant: normal;
+}
+.fact_txt{
+    text-align: justify;
+}
+.card-date{
+  color:#8748F8;
+  font-style: italic;
+  font-weight: bold;
+  position: relative;
+  right: 0px !important;
+  text-align: right;
+}
+#vertical_rule{
+position: relative;
+right:0%;
+}
+
+.balance_card {
+    width: 21rem;
+    background: linear-gradient(to right, #8748F8, #8D4CF3, #8648f86d);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  }
+  
+
+  .expenditure_card {
+    background-color: #f8f9faf6 !important;
+    color: black !important;
+    border-radius: 10px !important;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25) !important;
+    margin-bottom: 20px !important; 
+  }
+  .details_padding {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 2px !important;
+    justify-content: space-between !important;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .details_padding .MuiListItem-root {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+  
+  
+  .MuiAccordion-root {
+    background-color: transparent;
+  }
+  
+  .MuiAccordion-root:before {
+    height: 30px;
+  }
+  

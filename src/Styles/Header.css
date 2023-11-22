@@ -1,0 +1,127 @@
+
+.loading::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -10%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  filter: blur(12rem);
+  z-index: -999;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  -webkit-filter: blur(12rem);
+}
+
+.head{
+  color: black;
+}
+.button{
+  background-color:#8748F8;
+  border: none;
+}
+.button:hover{
+  opacity: 0.8 !important;
+}
+
+.loading .container div h1 {
+  color: rgba(0, 0, 0, 0.874);
+  line-height: 64px;
+  font-family: 'Karla', sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+
+.small_txt{
+  font-family: 'Karla', sans-serif;
+  
+}
+.landing_page{
+  position: relative;
+  top:20px;
+  padding: 30px;
+}
+
+.loading .container .features {
+  width: inherit;
+}
+
+.loading .container div .cards {
+  position: relative;
+  left: calc(59% - 60px);
+  transform: translateX(-50%);
+  top: -40px;
+  width: fit-content;
+  display: flex;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+}
+
+.loading .container div .cards .card {
+  width: fit-content;
+}
+
+.loading .container div .cards .card:first-child {
+  left:-25px;
+  transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  background-color: #8748F8;
+
+  -o-transform: rotate(-10deg);
+}
+
+loading .container div .cards .card:first-child:hover {
+  background-color: #8748F8;
+
+}
+.card_txt{
+  font-family: 'Karla', sans-serif;
+  font-family: 'Monoton', sans-serif;
+  color: #8748F8 !important;
+  font-size: 30px;
+}
+.card_txt1{
+  font-family: 'Karla', sans-serif;
+  font-family: 'Monoton', sans-serif;
+  color: #ffffff !important;
+  font-size: 30px;
+}
+
+/* .card_foot{
+  position: relative;
+  left:-100px;
+  top:20px;
+} */
+.card_txt_para{
+  font-family: 'Monofett', monospace;
+  font-size: 30px;
+  color: #8748F8;
+}
+.loading .container div .cards .card:last-child {
+  position: absolute;
+  top: 25px;
+  right: -120px;
+  box-shadow: -3px -4px 8px 5px rgba(198, 198, 198, 0.219);
+  transform: rotate(10deg);
+  background-color: white;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+}
+
+.loading .container div .cards .card .card-body img {
+  max-width: 190px;
+  position: relative;
+  left:7px;
+}

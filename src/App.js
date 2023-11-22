@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Header from './Pages/Header';
+import NavBar from './Pages/Navbar';
+import Midpage from './Pages/Midpage';
+import Travel from './Pages/Travel';
+import TotalMoney from './Pages/TotalMoney';
+import { Route ,Routes} from 'react-router';
+import Investment from './Pages/Investment';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Routes>
+        <Route path="/" element={<NavBar />}/>
+        <Route path="/travel_form" element={<Travel />} />
+        <Route path="/total_balance" element={<TotalMoney />} />
+        <Route path="/Investment" element={<Investment />} />
+       </Routes>
     </div>
+    
   );
 }
 
