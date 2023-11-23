@@ -139,11 +139,6 @@ function Travel() {
                 <span style={{marginLeft:'3px',color:'#8748F8'}}>**Enter the amount approximately to spend for travelling</span>
               </Col>
             </Row>
-         
-           
-     
-      
-        
        {showsnap && <button style={{ marginBottom: '10px' }} onClick={getImage}>
           Take screenshot
         </button>
