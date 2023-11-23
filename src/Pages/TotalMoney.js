@@ -233,7 +233,6 @@ const fetchUserData = async () => {
                   <option value="solid">Solid</option>
                   <option value="liquid">Liquid</option>
                 </Form.Select>
-                <span style={{marginLeft:'3px',color:'#8748F8'}}>**Either solid or liquid</span>
 
               </Col>
               

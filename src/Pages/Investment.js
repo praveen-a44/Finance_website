@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
  function Investment() {
+  
   return (
     <div>
        <Container fluid className="p-3"> 
@@ -20,10 +21,13 @@ import InputGroup from 'react-bootstrap/InputGroup';
               
             <div className="d-flex justify-content-between align-items-center mb-3 w-100">
             <span className="fw-bold">Add your Investment spending either monthwise or anually</span>
+            <br>
+            </br>
             <Button className="action_button">Login</Button>
           </div>
-
             </div>
+            <span style={{marginLeft:'3px',color:'#8748F8'}}>Keep Trust on us we keep your data very secure </span>
+
             <hr className="my-4"/>
             <Row className="mb-5">
               <Col>

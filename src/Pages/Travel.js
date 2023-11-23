@@ -9,12 +9,33 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useEffect } from 'react';
+import image1 from '../assests/images/4955650.jpg'
 import axios from 'axios';
-
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateField } from '@mui/x-date-pickers/DateField';
+import { useScreenshot } from 'use-react-screenshot'
+import { createRef } from 'react';
+import dayjs from 'dayjs';
 function Travel() {
-
+  const ref = createRef(null)
+  const [image, takeScreenshot] = useScreenshot()
+  const[showsnapimage,setShowsnapimage]= useState(false);
+  const[count,setCount]=useState(0)
+  const getImage = () => {
+    if(!showsnapimage){
+      setShowsnapimage(true);
+      takeScreenshot(ref.current, { quality: 1 })
+    }
+  }
+  const [value, setValue] = React.useState(dayjs('2022-04-17'));
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [showMobileLogin, setShowMobileLogin] = useState(false);
+  const[showplace,setShowplace] = useState("")
+  const[amount,setAmount] = useState("")
+  const[date,setDate] = useState("")
+  const[showsnap,setShowsnap] = useState(false);
   const [balance, setBalance] = useState(() => {
     return parseFloat(localStorage.getItem('balance'))|| 0;
   });
@@ -24,6 +45,7 @@ function Travel() {
   const [formData, setFormData] = useState({
     place: '',
     expenditure: '',
+    date:''
    
 
   });
@@ -45,14 +67,22 @@ function Travel() {
     event.preventDefault();
     
     let travelHistory = JSON.parse(localStorage.getItem('travelHistory')) || [];
-    travelHistory.push(formData);
-    localStorage.setItem('travelHistory', JSON.stringify(travelHistory));
+    const exists = travelHistory.some(data => JSON.stringify(data) === JSON.stringify(formData));
+    
+    if (!exists) {
+        travelHistory.push(formData);
+        localStorage.setItem('travelHistory', JSON.stringify(travelHistory));
+    }
   
     let expenditure = parseFloat(event.target.expenditure.value);
     let currentBalance = parseFloat(localStorage.getItem('balance')) || 0;
     let newBalance = currentBalance - expenditure;
   
     setBalance(newBalance);
+    setShowplace(formData.place);
+    setAmount(formData.expenditure);
+    setDate(formData.date)
+    setShowsnap(true)
     localStorage.setItem('balance', newBalance.toString());
   };
   
@@ -67,7 +97,7 @@ function Travel() {
 
   return (
     <Container fluid className="p-3"> 
-              <button onClick={handleClick}>Clear</button>
+  <button onClick={handleClick}>Clear</button>
 
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -84,7 +114,15 @@ function Travel() {
             <hr className="my-4"/>
             <Row className="mb-5">
               <Col>
-              <Form.Label className="fw-bold">Travelling Details:</Form.Label>
+              <div className="d-flex flex-row align-items-center">
+                  <span className="fw-bold d-block me-2">Date:</span>
+                  <Form.Control type="date"  name={"date"} onChange={handleChange} style={{
+                      maxWidth: '150px'
+                    }} className='input_field' required="required"/>
+                </div>
+            <hr className="my-4"/>
+
+              <Form.Label className="fw-bold">Travelling Continent:</Form.Label>
                 <Form.Select aria-label="Type" name="place" className="my-2 input_field drop" required="required" onChange={handleChange}>
                   <option>Choose the Continent Name you wish to travel</option>
                   <option value="Asia">Asia</option>
@@ -96,17 +134,39 @@ function Travel() {
                   <option value="Antartica">Antartica</option>
                   
                 </Form.Select>
+                <Form.Label className="fw-bold">Expenditure:</Form.Label>
                 <Form.Control placeholder={"Add total expenditures of travel (approximately)"} type="number" name="expenditure" className="my-2 input_field" autoComplete="email" required="required" onChange={handleChange}/>
-                <span style={{marginLeft:'3px',color:'#8748F8'}}>**Either solid or liquid</span>
+                <span style={{marginLeft:'3px',color:'#8748F8'}}>**Enter the amount approximately to spend for travelling</span>
               </Col>
             </Row>
          
+           
+     
+      
+        
+       {showsnap && <button style={{ marginBottom: '10px' }} onClick={getImage}>
+          Take screenshot
+        </button>
+      }
+      {showsnapimage && 
+      
+      <div className='image_snap_wrap'>
+      <img width="480px" height="120px" src={image} alt={'Screenshot'} />
+      </div>
+       }
+
             <Row className="mt-4 justify-content-end">
               <Col lg={6}>
+              <div ref={ref}>
                 <div className="d-flex flex-row align-items-start justify-content-between">
-                  <span className="fw-bold">Type:
+                  <span className="fw-bold">Place:
                   </span>
-                  
+                  <span>{showplace}</span>
+                </div>
+                <div className="d-flex flex-row align-items-start justify-content-between">
+                  <span className="fw-bold">Date:
+                  </span>
+                  <span>{date}</span>
                 </div>
                 <hr/>
                 <div className="d-flex flex-row align-items-start justify-content-between" style={{
@@ -114,7 +174,8 @@ function Travel() {
                   }}>
                   <span className="fw-bold">Total:
                   </span>
-                  
+                  <span>{amount}</span>
+                </div>
                 </div>
               </Col>
             </Row>
@@ -143,7 +204,6 @@ function Travel() {
         </Col>
       </Row>
     </Form>
-
     </Container>
   )
 }
