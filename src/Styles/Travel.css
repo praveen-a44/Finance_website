@@ -1,0 +1,40 @@
+.clear{
+    height: 50px;
+    width: 50px;
+    background-color: #8748F8;
+    position: absolute;
+    border-radius: 50px;
+    box-shadow: 2px 3px 11px rgb(188, 188, 188);
+    z-index: 99;
+}
+.clear >img{
+    z-index: 999 !important;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left:5px;
+    top:3px;
+}
+.clear:hover{
+    box-shadow: none;
+    transform: scale(0.96);
+    transition: 0.5s;
+}
+
+.button-overlay {
+    position: relative;
+    display:contents inline-block;
+    background-color:#8748F8ed;
+    width: 150px;
+    border-radius: 11px;
+}
+.button-overlay button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: none;
+    font-weight: bold;
+    background-color: transparent;
+    color: white;
+    transform: translate(-50%, -50%);
+}

@@ -18,6 +18,9 @@ import { DateField } from '@mui/x-date-pickers/DateField';
 import { useScreenshot } from 'use-react-screenshot'
 import { createRef } from 'react';
 import dayjs from 'dayjs';
+import borrom from '../assests/images/broom.png'
+import '../Styles/Travel.css'
+import snap from '../assests/images/capture.png'
 function Travel() {
   const ref = createRef(null)
   const [image, takeScreenshot] = useScreenshot()
@@ -28,6 +31,7 @@ function Travel() {
       setShowsnapimage(true);
       takeScreenshot(ref.current, { quality: 1 })
     }
+    
   }
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -42,6 +46,9 @@ function Travel() {
   const openModal = () => {
     setModalIsOpen(true);
   };
+  function closeModal(){
+    setModalIsOpen(false);
+  }
   const [formData, setFormData] = useState({
     place: '',
     expenditure: '',
@@ -97,7 +104,9 @@ function Travel() {
 
   return (
     <Container fluid className="p-3"> 
-  <button onClick={handleClick}>Clear</button>
+  <div className='clear' onClick={handleClick} title="clear Hitory">
+    <img  src={borrom} alt="clear" height="40px" width="40px"/>
+  </div>
 
     <Form onSubmit={handleSubmit}>
       <Row>
@@ -139,16 +148,8 @@ function Travel() {
                 <span style={{marginLeft:'3px',color:'#8748F8'}}>**Enter the amount approximately to spend for travelling</span>
               </Col>
             </Row>
-       {showsnap && <button style={{ marginBottom: '10px' }} onClick={getImage}>
-          Take screenshot
-        </button>
-      }
-      {showsnapimage && 
       
-      <div className='image_snap_wrap'>
-      <img width="480px" height="120px" src={image} alt={'Screenshot'} />
-      </div>
-       }
+      
 
             <Row className="mt-4 justify-content-end">
               <Col lg={6}>
@@ -171,10 +172,23 @@ function Travel() {
                   </span>
                   <span>{amount}</span>
                 </div>
+                
                 </div>
+                
               </Col>
             </Row>
+            
             <hr className="my-4"/>
+            {showsnap &&
+              <div class="button-overlay" style={{ marginBottom: '10px' }} onClick={(event)=>{
+                getImage(event);openModal(event)
+              }}>
+              <img src={snap} alt="snap" height="50px" width="50px" />
+              <button>snap</button>
+            </div>
+      }
+            
+          
           </Card>
         </Col>
         <Col md={4} lg={3}>
@@ -184,7 +198,7 @@ function Travel() {
             <Form.Group className="my-3">
               <Form.Label className="fw-bold">Balance:</Form.Label>
               <InputGroup className="my-1 flex-nowrap">
-                <Form.Control value={balance} name="taxRate" type="number" className="bg-white border input_field"  readOnly/>
+                <Form.Control value={balance} name="taxRate" type="number" className="bg-white border input_field" id="balance" readOnly/>
               </InputGroup>
               <ul>
       {travelHistory.map((travel, index) => (
@@ -199,6 +213,21 @@ function Travel() {
         </Col>
       </Row>
     </Form>
+      <Modal 
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        style={{
+          overlay:{
+            zIndex:3000
+          },
+          
+        }}
+      >
+        <div className='image_snap_wrap'>
+      <img width="480px" height="120px" src={image} alt={'Screenshot'} />
+      </div>
+      </Modal>
     </Container>
   )
 }
