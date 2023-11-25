@@ -105,7 +105,7 @@ function Midpage() {
     setTimeout(() => {
       setShowSpinner(false);
       history(path);
-    }, 700);
+    }, 1700);
   }
 
   const typingRef = useRef();
@@ -143,29 +143,13 @@ function Midpage() {
 
     </div>
 
-    {showSpinner && (
-  <div
-  style={{
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    display: "flex",
-    zIndex: 9999,
-    transform: "translate(-50%, -50%)"
-  }}
-  >
-    <div>
-      <div className="spinner-border" role="status"></div>
-      <div id="load_txt">Loading...</div>
-    </div>
-  </div>
-)}
-
+    {showSpinner && 
+     <section class="sec-loading">
+     <div class="one">
+     
+     </div>
+   </section>
+     } 
 
 <div className='hr_line'>
     <img src={separator_img} height='50px' width='50px' alt='Divider'/>

@@ -175,8 +175,6 @@ const handleLogin = async (event) => {
   const openModal = () => {
     setModalIsOpen(true);
   };
-  
-  const [numExpenditures, setNumExpenditures] = useState(0);
 
 
   const [userData, setUserData] = useState({});
@@ -351,32 +349,6 @@ const fetchUserData = async () => {
 
       </Modal>
 
-      <Form onSubmit={handleSubmit}>
-  <Form.Group>
-    <Form.Label>Monthly Budget</Form.Label>
-    <Form.Control type="number" name="monthlyBudget" placeholder="Enter your monthly budget" required />
-  </Form.Group>
-
-  <Form.Group>
-    <Form.Label>Salary</Form.Label>
-    <Form.Control type="number" name="salary" placeholder="Enter your salary" required />
-  </Form.Group>
-
-  <Form.Group>
-    <Form.Label>Number of Expenditures</Form.Label>
-    <Form.Control type="number" name="numExpenditures" placeholder="Enter the number of expenditures" required />
-  </Form.Group>
-
-  {/* Render a form group for each expenditure */}
-  {Array.from({ length: numExpenditures }, (_, i) => (
-    <Form.Group key={i}>
-      <Form.Label>Expenditure #{i + 1}</Form.Label>
-      <Form.Control type="number" name={`expenditure${i}`} placeholder={`Enter expenditure #${i + 1}`} required />
-    </Form.Group>
-  ))}
-
-  <Button type="submit">Submit</Button>
-</Form>
 {showconfetti && <Confetti />}
     </Container>
     

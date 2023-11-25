@@ -4,10 +4,22 @@ import Navbar from "react-bootstrap/Navbar";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../Styles/Navbar.css'
+import { useNavigate } from 'react-router-dom';
+
 import logo from '../assests/images/logo.png'
 import Header from "./Header";
 import Midpage from "./Midpage";  
+import { useState } from "react";
 function NavBar() {
+  const[showSpinner,setShowSpinner] = useState(false);
+  const history = useNavigate()
+  const handleClick = (path) => {
+    setShowSpinner(true);
+    setTimeout(() => {
+      setShowSpinner(false);
+      history(path);
+    }, 1700);
+  };
   return (
     <>
     <Navbar expand="lg" className="py-2 nav">
@@ -19,11 +31,11 @@ function NavBar() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link href="#action1" className="nav_txt">Track Income</Nav.Link>
-            <Nav.Link href="#action1" className="px-lg-3 nav_txt">
+            <Nav.Link onClick={() => handleClick('/trackIncome')} className="nav_txt">Track Income</Nav.Link>
+            <Nav.Link onClick={() => handleClick('/budget_form')} className="px-lg-3 nav_txt">
               Planing
             </Nav.Link>
-            <Nav.Link href="#action1" className="nav_txt">Remind me</Nav.Link>
+            <Nav.Link onClick={() => handleClick('/remindMe')}  className="nav_txt">Remind me</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <div className="d-flex align-items-center order">
@@ -39,6 +51,14 @@ function NavBar() {
     <Header/>
     <Midpage />
   
+    {showSpinner && 
+     <section class="sec-loading">
+     <div class="one">
+     
+     </div>
+   </section>
+     } 
+
     </>
   );
 }

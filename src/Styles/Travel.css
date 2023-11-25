@@ -38,3 +38,89 @@
     color: white;
     transform: translate(-50%, -50%);
 }
+
+:root {
+    --border-width: 7px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  
+  .sec-loading {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: 9999;
+    height: 100vh !important; 
+    background-color: #8748F8 !important;
+    overflow: hidden;
+
+  }
+  body.no-scroll {
+    overflow-y: hidden !important;
+  }
+
+  
+  .sec-loading .one {
+    height: 80px;
+    width: 80px;
+    border: var(--border-width) solid white;
+    transform: rotate(45deg);
+    border-radius: 0 50% 50% 50%;
+    position: relative;
+    animation: move 0.5s linear infinite alternate-reverse;
+  }
+  
+  .sec-loading .one::before {
+    content: "";
+    position: absolute;
+    height: 55%;
+    width: 55%;
+    border-radius: 50%;
+    border: var(--border-width) solid transparent;
+    border-top-color: white;
+    border-bottom-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 1s linear infinite;
+  }
+  
+  @keyframes rotate {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  @keyframes move {
+    to {
+      transform: translateY(15px) rotate(45deg);
+    }
+  }
+  
+::-webkit-scrollbar {
+  width: 6px; 
+  height: 5px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+
+::-webkit-scrollbar-thumb {
+  background:#8748F8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+

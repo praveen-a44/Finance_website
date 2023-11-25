@@ -34,6 +34,7 @@ function Travel() {
     
   }
   const [value, setValue] = React.useState(dayjs('2022-04-17'));
+  const [showSpinner1, setShowSpinner1] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [showMobileLogin, setShowMobileLogin] = useState(false);
   const[showplace,setShowplace] = useState("")
@@ -97,8 +98,13 @@ function Travel() {
   const travelHistory = JSON.parse(localStorage.getItem('travelHistory')) || [];
   
   const handleClick = () => {
-    localStorage.removeItem('travelHistory');
-    window.location.reload();
+    setShowSpinner1(true);
+    setTimeout(() => {
+      setShowSpinner1(false);
+      localStorage.removeItem('travelHistory');
+      window.location.reload();
+    }, 2500);
+   
   }
   
 
@@ -228,6 +234,13 @@ function Travel() {
       <img width="480px" height="120px" src={image} alt={'Screenshot'} />
       </div>
       </Modal>
+
+     {showSpinner1 && 
+     <section class="sec-loading">
+     <div class="one">
+     </div>
+   </section>
+     } 
     </Container>
   )
 }
