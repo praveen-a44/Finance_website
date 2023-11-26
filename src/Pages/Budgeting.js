@@ -9,15 +9,12 @@ import '../Styles/Budget.css'
 import Navbar1 from './Nav';
 import { Trash } from 'react-bootstrap-icons';
 
-
 const CenteredForm = () => {
   const [budgets, setBudgets] = useState(JSON.parse(localStorage.getItem('budgets')) || []);
   const [groupedBudgets, setGroupedBudgets] = useState({});
   const [showModal, setShowModal] = useState(false);
-
   const monthOrder = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const yearOrder = [2023,2024,2025,2026,2027,2028,2029,2030,2031,2031,2032,2033,2034,2035,2036,2037,2040]
-
   useEffect(() => {
     const groups = budgets.reduce((grouped, budget) => {
       const key = `${budget.year}`;
@@ -41,7 +38,6 @@ const CenteredForm = () => {
     localStorage.setItem('budgets', JSON.stringify(newBudgets));
   };
   
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const { month, year, expenditure, amount } = event.target.elements;
@@ -72,7 +68,6 @@ const CenteredForm = () => {
   
     event.target.reset();
   };
-  
   const handleClear = (year) => {
     setShowModal(true);
   };
