@@ -95,10 +95,7 @@ function Travel() {
     setShowsnap(true)
     localStorage.setItem('balance', newBalance.toString());
   };
-  
-  
   const travelHistory = JSON.parse(localStorage.getItem('travelHistory')) || [];
-  
   const handleClick = () => {
     setShowSpinner1(true);
     setTimeout(() => {
@@ -108,8 +105,6 @@ function Travel() {
     }, 2500);
    
   }
-  
-
   return (
     <>
     <Navbar1 />
@@ -117,7 +112,6 @@ function Travel() {
   <div className='clear' onClick={handleClick} title="clear Hitory">
     <img  src={borrom} alt="clear" height="40px" width="40px"/>
   </div>
-
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col md={6} lg={9}>
@@ -128,7 +122,6 @@ function Travel() {
             <span className="fw-bold">Add your total travel planning to allocate a budget</span>
             <Button className="action_button" onClick={openModal}>Login</Button>
           </div>
-
             </div>
             <hr className="my-4"/>
             <Row className="mb-5">
@@ -140,7 +133,6 @@ function Travel() {
                     }} className='input_field' required="required"/>
                 </div>
             <hr className="my-4"/>
-
               <Form.Label className="fw-bold">Travelling Continent:</Form.Label>
                 <Form.Select aria-label="Type" name="place" className="my-2 input_field drop" required="required" onChange={handleChange}>
                   <option>Choose the Continent Name you wish to travel</option>
@@ -151,7 +143,6 @@ function Travel() {
                   <option value="Europe">Europe</option>
                   <option value="Africa">Africa</option>
                   <option value="Antartica">Antartica</option>
-                  
                 </Form.Select>
                 <Form.Label className="fw-bold">Expenditure:</Form.Label>
                 <Form.Control placeholder={"Add total expenditures of travel (approximately)"} type="number" name="expenditure" className="my-2 input_field" autoComplete="email" required="required" onChange={handleChange}/>
@@ -179,9 +170,7 @@ function Travel() {
                   </span>
                   <span>{amount}</span>
                 </div>
-                
                 </div>
-                
               </Col>
             </Row>
             <hr className="my-4"/>
@@ -197,7 +186,6 @@ function Travel() {
         <Col md={4} lg={3}>
           <div className="sticky-top pt-md-3 pt-xl-4">
             <Button type="submit" className="d-block w-100 action_button">Submit</Button>
-         
             <Form.Group className="my-3">
               <Form.Label className="fw-bold">Balance:</Form.Label>
               <InputGroup className="my-1 flex-nowrap">
@@ -211,7 +199,6 @@ function Travel() {
       ))}
     </ul>
             </Form.Group>
-         
           </div>
         </Col>
       </Row>
