@@ -16,6 +16,8 @@ import { useEffect } from 'react';
 import { FaGoogle,FaMobile } from 'react-icons/fa';
 import Modal from 'react-modal';
 import Confetti from 'react-confetti';
+import Navbar1 from './Nav';
+
 
 
 
@@ -198,6 +200,8 @@ const fetchUserData = async () => {
 
   
   return (
+    <>
+    <Navbar1 />
     <Container fluid className="p-3"> 
     <ToastContainer />
     <Form onSubmit={handleSubmit}>
@@ -351,6 +355,7 @@ const fetchUserData = async () => {
 
 {showconfetti && <Confetti />}
     </Container>
+    </>
     
   )
 }

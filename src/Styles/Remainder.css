@@ -1,0 +1,92 @@
+.reminder-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 1rem;
+}
+
+.reminder-note {
+  text-align: left;
+  justify-content: left;
+  width: 100%;
+  flex: 1 0 30%;
+  max-width: 300px;
+  min-height: 200px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  background: #ffe66e;
+}
+
+.reminder-note:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-width: 0 26px 26px 0;
+  border-style: solid;
+  border-color: rgba(71, 71, 71, 0.288);
+  background: rgba(0, 0, 0, 0.094);
+}
+
+.reminder-note:nth-child(6n+1) {
+  background: #ffe66e;
+}
+
+.reminder-note:nth-child(6n+2) {
+  background: #a1ef9b;
+}
+
+.reminder-note:nth-child(6n+3) {
+  background: #ffafdf;
+}
+
+.reminder-note:nth-child(6n+4) {
+  background: #d7afff;
+}
+
+.reminder-note:nth-child(6n+5) {
+  background: #9edfff;
+}
+
+.reminder-note:nth-child(6n+6) {
+  background: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .reminder-note {
+    width: 100%;
+  }
+}
+.input_field_remainder{
+  border: 1px solid #bdbdbda1;
+}
+
+#each_delete:hover{
+  cursor: pointer;
+}
+.past-reminder {
+  color:grey;
+  text-decoration: line-through;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake {
+  animation: shake 0.5s !important; 
+  animation-iteration-count: infinite; 
+}

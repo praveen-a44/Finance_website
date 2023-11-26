@@ -21,6 +21,8 @@ import dayjs from 'dayjs';
 import borrom from '../assests/images/broom.png'
 import '../Styles/Travel.css'
 import snap from '../assests/images/capture.png'
+import Navbar1 from './Nav';
+
 function Travel() {
   const ref = createRef(null)
   const [image, takeScreenshot] = useScreenshot()
@@ -109,6 +111,8 @@ function Travel() {
   
 
   return (
+    <>
+    <Navbar1 />
     <Container fluid className="p-3"> 
   <div className='clear' onClick={handleClick} title="clear Hitory">
     <img  src={borrom} alt="clear" height="40px" width="40px"/>
@@ -154,9 +158,6 @@ function Travel() {
                 <span style={{marginLeft:'3px',color:'#8748F8'}}>**Enter the amount approximately to spend for travelling</span>
               </Col>
             </Row>
-      
-      
-
             <Row className="mt-4 justify-content-end">
               <Col lg={6}>
               <div ref={ref}>
@@ -183,7 +184,6 @@ function Travel() {
                 
               </Col>
             </Row>
-            
             <hr className="my-4"/>
             {showsnap &&
               <div class="button-overlay" style={{ marginBottom: '10px' }} onClick={(event)=>{
@@ -191,10 +191,7 @@ function Travel() {
               }}>
               <img src={snap} alt="snap" height="50px" width="50px" />
               <button>snap</button>
-            </div>
-      }
-            
-          
+            </div>}
           </Card>
         </Col>
         <Col md={4} lg={3}>
@@ -242,6 +239,7 @@ function Travel() {
    </section>
      } 
     </Container>
+    </>
   )
 }
 

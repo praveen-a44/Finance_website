@@ -1,28 +1,25 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React from 'react'
 import { Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import '../Styles/Navbar.css'
+import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-import logo from '../assests/images/logo.png'
-import Header from "./Header";
-import Midpage from "./Midpage";  
-import { useState } from "react";
-function NavBar() {
-  const[showSpinner,setShowSpinner] = useState(false);
+function Navbar1() {
+    const[showSpinner,setShowSpinner] = useState(false);
   const history = useNavigate()
-  const handleClick = (path) => {
-    setShowSpinner(true);
-    setTimeout(() => {
-      setShowSpinner(false);
-      history(path);
-    }, 1700);
-  };
+
+    const handleClick = (path) => {
+        setShowSpinner(true);
+        setTimeout(() => {
+          setShowSpinner(false);
+          history(path);
+        }, 1700);
+      };
   return (
-    <>
-    <Navbar expand="lg" className="py-2 nav">
+    <div>
+       <Navbar expand="lg" className="py-2 nav">
       <Container>
         <Navbar.Brand href="#" className="me-lg-5">
         <h1 id="logo"><span id="span_logo">B</span>B</h1>
@@ -32,7 +29,7 @@ function NavBar() {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
             <Nav.Link onClick={() => handleClick('/trackIncome')} className="nav_txt">Track Income</Nav.Link>
-            <Nav.Link onClick={() => handleClick('/budget_form')} className="px-lg-2 nav_txt">
+            <Nav.Link onClick={() => handleClick('/budget_form')} className="px-lg-3 nav_txt">
               Planing
             </Nav.Link>
             <Nav.Link onClick={() => handleClick('/remainder_form')}  className="nav_txt">Remind me</Nav.Link>
@@ -48,9 +45,6 @@ function NavBar() {
         </div>
       </Container>
     </Navbar>
-    <Header/>
-    <Midpage />
-  
     {showSpinner && 
      <section class="sec-loading">
      <div class="one">
@@ -58,9 +52,8 @@ function NavBar() {
      </div>
    </section>
      } 
-
-    </>
-  );
+    </div>
+  )
 }
+export default Navbar1
 
-export default NavBar;
