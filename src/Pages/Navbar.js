@@ -5,7 +5,6 @@ import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../Styles/Navbar.css'
 import { useNavigate } from 'react-router-dom';
-
 import logo from '../assests/images/logo.png'
 import Header from "./Header";
 import Midpage from "./Midpage";  

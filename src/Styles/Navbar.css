@@ -99,11 +99,9 @@
     font-size: 20px;
     justify-content: space-between;
     padding: 10px 20px !important;
-    
   }
   .nav_txt:hover{
     color: rgb(16, 16, 16);
-    border: 2px solid white;
     transition: 0.4s; 
     border-radius: 15px;
     background-color: white;

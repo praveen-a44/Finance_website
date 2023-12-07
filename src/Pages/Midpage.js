@@ -62,6 +62,14 @@ function Midpage() {
   const [date, setDate] = useState('');
   const[highlight,setHighlight] = useState('')
 
+  const steps = [
+    { title: 'Step 1', description: 'Description for step 1...' },
+    { title: 'Step 2', description: 'Description for step 2...' },
+    { title: 'Step 3', description: 'Description for step 2...' },
+
+
+
+  ];
   const category = 'money'
   useEffect(() => {
     const storedDate = localStorage.getItem('date');
@@ -75,20 +83,24 @@ function Midpage() {
           'X-Api-Key': '5zzJa8fel6df8KbbkyD+Yg==Em3tWC6enFCwxsvN'
         }
       })
-      .then(response => {
-        console.log(response.data);
-        let randomIndex = Math.floor(Math.random() * response.data.length);
-        let quote = response.data[randomIndex].quote;
-        let words = quote.split(' ');
-        let start = Math.floor(Math.random() * (words.length - 5));
-        let highlight = words.slice(start, start + 5).join(' ');
-        let markedQuote = quote.replace(highlight, <mark>${highlight}</mark>);
-        setFact(markedQuote);
-        setDate(currentDate);
-        localStorage.setItem('date', currentDate);
-        localStorage.setItem('quote', markedQuote);
-      })
-      .catch(error => console.error(error));
+
+.then(response => {
+  console.log(response.data);
+  let randomIndex = Math.floor(Math.random() * response.data.length);
+  let quote = response.data[randomIndex].quote;
+  let words = quote.split(' ');
+  let start = Math.floor(Math.random() * (words.length - 5));
+  let highlight = words.slice(start, start + 5).join(' ');
+  let markedQuote = quote.replace(highlight, `<mark>${highlight}</mark>`);
+  setFact(markedQuote);
+  setDate(currentDate);
+  localStorage.setItem('date', currentDate);
+  localStorage.setItem('quote', markedQuote);
+})
+.catch(error => console.error(error));
+
+
+
     } else {
       setFact(localStorage.getItem('quote'));
       setDate(storedDate);
@@ -234,8 +246,26 @@ function Midpage() {
 </div>
 </div>
 
+<div className="timeline">
+      {steps.map((step, index) => (
+        <div className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`} key={index}>
+          <div className="point"></div>
+          <div className="content">
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+<br>
+</br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 
-
+<h1>Hello</h1>
     </>
   )
 }

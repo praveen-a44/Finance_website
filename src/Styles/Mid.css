@@ -316,3 +316,56 @@ right:0%;
     height: 30px;
   }
   
+  .timeline {
+    position: relative;
+    padding: 40px 0;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    height: 90vh;
+    background: #C5C5C5;
+  }
+  
+  .timeline-item {
+    position: relative;
+    margin-bottom: 240px;
+  }
+  
+  .timeline-item .point {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 9px);
+    width: 20px;
+    height: 20px;
+    background:white;
+    border: 5px solid #8D4CF3;
+    border-radius: 50%;
+  }
+  
+  .timeline-item .content {
+    width: 30%;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    background: linear-gradient(to right, #3900a493, #8D4CF3, #8648f8ab);
+    color: white;
+    left: 60%;
+
+  }
+  
+  .timeline-item.left .content {
+    left: auto;
+    right: 52%; 
+  }
+  
+  .timeline-item.right .content {
+    left: 52%;
+  }
+  

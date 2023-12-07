@@ -11,9 +11,9 @@
   width: 100%;
   flex: 1 0 30%;
   max-width: 300px;
-  min-height: 200px;
+  min-height: 100px;
   padding: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  box-shadow: 0 0 13px rgba(0,0,0,0.15);
   border-radius: 10px;
   position: relative;
   overflow: hidden;

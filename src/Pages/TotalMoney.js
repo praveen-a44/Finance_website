@@ -94,6 +94,9 @@ const handleLogout = () => {
   setName("");
   setEmail_main("");
   localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('otherReminders');
+  localStorage.removeItem('budgets');
+  
   localStorage.removeItem('name');
   localStorage.removeItem('email');
 };
@@ -213,9 +216,9 @@ const fetchUserData = async () => {
             <div className="d-flex justify-content-between align-items-center mb-3 w-100">
             <span className="fw-bold">Add your total balance money or savings to track your money</span>
             {isLoggedIn ? (
-  <Button className="action_button" onClick={handleLogout}>Logout</Button>
+  <Button className="action_button" onClick={handleLogout}>Check Out</Button>
 ) : (
-  <Button className="action_button" onClick={openModal}>Login</Button>
+  <Button className="action_button" onClick={openModal}>Check In</Button>
 )}
           </div>
 
@@ -327,7 +330,7 @@ const fetchUserData = async () => {
        <Form onSubmit={handleLogin}>
               <label htmlFor="email" onChange={e => setEmail(e.target.value)} >Email:</label>
               <Input1 type="email" name="email" placeholder="Email" required />
-           
+              <span style={{marginLeft:'3px',color:'#8748F8'}}>**check in if are already register in this page if not go back and fill it and come</span>
               <Button1 type="submit" style={{ backgroundColor: "#8748F8",color:'white'}}>Login</Button1>
                 </Form>
                 <Hr />

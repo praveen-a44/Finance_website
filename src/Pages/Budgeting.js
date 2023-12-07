@@ -8,11 +8,17 @@ import { FaTrash } from 'react-icons/fa';
 import '../Styles/Budget.css'
 import Navbar1 from './Nav';
 import { Trash } from 'react-bootstrap-icons';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf'
+import { FaDownload } from 'react-icons/fa';
 
 const CenteredForm = () => {
   const [budgets, setBudgets] = useState(JSON.parse(localStorage.getItem('budgets')) || []);
   const [groupedBudgets, setGroupedBudgets] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [balance, setBalance] = useState(() => {
+    return parseFloat(localStorage.getItem('balance'))|| 0;
+  });
   const monthOrder = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const yearOrder = [2023,2024,2025,2026,2027,2028,2029,2030,2031,2031,2032,2033,2034,2035,2036,2037,2040]
   useEffect(() => {
@@ -38,6 +44,28 @@ const CenteredForm = () => {
     localStorage.setItem('budgets', JSON.stringify(newBudgets));
   };
   
+let pdfBase64 = null;
+  
+function GenerateInvoice() {
+
+  html2canvas(document.querySelector("#download_pdf")).then((canvas) => {
+    const imgData = canvas.toDataURL('image/png', 1.0);
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'pt',
+      format: [612, 792]
+    });
+    pdf.internal.scaleFactor = 1;
+    const imgProps= pdf.getImageProperties(imgData);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('invoice-001.pdf');
+    pdfBase64 = pdf.output('datauristring'); 
+  });
+}
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const { month, year, expenditure, amount } = event.target.elements;
@@ -45,8 +73,19 @@ const CenteredForm = () => {
       month: month.value,
       year: year.value,
       expenditure: expenditure.value,
-      amount: amount.value
+      amount: parseFloat(amount.value)
     };
+    
+    // Decrease the balance in local storage
+    const newBalance = balance - newBudget.amount;
+    if (newBalance < 0) {
+      alert('Insufficient balance');
+      event.target.reset();
+      return;
+    }
+    setBalance(newBalance);
+    localStorage.setItem('balance', newBalance.toString());
+  
     const newBudgets = [...budgets, newBudget];
     newBudgets.sort((a, b) => {
       if (a.year !== b.year) {
@@ -68,6 +107,7 @@ const CenteredForm = () => {
   
     event.target.reset();
   };
+  
   const handleClear = (year) => {
     setShowModal(true);
   };
@@ -79,12 +119,9 @@ const CenteredForm = () => {
     setShowModal(false);
   };
   
-  
-
   const calculateTotal = (budgets) => {
     return budgets.reduce((total, budget) => total + Number(budget.amount), 0);
   };
-
   return (
     <>
     <Navbar1 />
@@ -108,7 +145,6 @@ const CenteredForm = () => {
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
           <Card className="p-4 my-5">
-           
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="month">
                 <Form.Label>Month</Form.Label>
@@ -132,7 +168,7 @@ const CenteredForm = () => {
 
               <Form.Group controlId="expenditure">
                 <Form.Label>Expenditure</Form.Label>
-                <Form.Control className='input_field' type="text" placeholder="Add total expenditures of travel (approximately)" required />
+                <Form.Control className='input_field' type="text" placeholder="Type your expenditure things" required />
               </Form.Group>
 
               <Form.Group controlId="amount">
@@ -150,9 +186,11 @@ const CenteredForm = () => {
       {Object.entries(groupedBudgets).sort(([a], [b]) => yearOrder.indexOf(a) - yearOrder.indexOf(b)).map(([year, budgets]) => (
         <Row className="justify-content-center" key={year}>
           <Col xs={12} md={8} lg={6}>
-            <Card className="p-4 my-5">
+            <Card className="p-4 my-5"  id="download_pdf">
               <h4 className="text-center mb-4">{`Budget Planning for ${year}`}</h4>
               <Button style={{backgroundColor:'#f44f51',border:'none',width:'40px'}} onClick={() => handleClear(year)} className="mb-3"><Trash id="trash_all" /></Button>
+              <Button onClick={GenerateInvoice} className='w-25 download_btn' ><FaDownload /></Button>
+              <br></br>
               <Table striped bordered hover>
                 <thead>
                   <tr>

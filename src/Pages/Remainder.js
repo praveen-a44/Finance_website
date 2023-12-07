@@ -93,7 +93,6 @@ const Reminder = () => {
     <>
     <Navbar1 />
    <Container fluid className="p-3 container-width">
-
     <Row className="justify-content-center">
     <Col xs={12} md={8} lg={6}>
     <Card className="p-4 my-5">
@@ -128,12 +127,19 @@ const Reminder = () => {
       <br></br>
 
       <div className="reminder-list">
+        
         {reminders.map((reminder, index) => (
+          <>
+          
           <div key={index} className={`reminder-note ${reminder.displayed ? 'past-reminder' : ''}`}>
+            
             <h4>{reminder.title}</h4>
             <p>{reminder.date} {reminder.time}</p>
             <Trash id="each_delete" onClick={() => handleDelete(index)} />
+
           </div>
+          
+          </>
         ))}
       </div>
 
