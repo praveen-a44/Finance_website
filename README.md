@@ -1,3 +1,10 @@
+## Developed a personal finance management web application using MERN Stack
+
+This helps to provide some insights to users about how money is working, and it can helps to track where the money is going, It also has some added features like, Planning a tour from the user’s budget, track the user’s investing, Budget planning feature with pdf download option, Daily reminder in the format of Sticky notes 
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
