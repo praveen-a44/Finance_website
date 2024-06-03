@@ -3,7 +3,27 @@
 This helps to provide some insights to users about how money is working, and it can helps to track where the money is going, It also has some added features like, Planning a tour from the user’s budget, track the user’s investing, Budget planning feature with pdf download option, Daily reminder in the format of Sticky notes 
 
 # Working Prototype of the model
+## Landing Page
 ![Finance_website](src/assests/images/pic1.png)
+
+## Options area
+![Finance_website](src/assests/images/pic2.png)
+
+## Total balance checking section
+![Finance_website](src/assests/images/pic3.png)
+
+## Instructions section
+![Finance_website](src/assests/images/pic4.png)
+
+## Budject page 
+![Finance_website](src/assests/images/pic5.png)
+
+## Remainder page
+![Finance_website](src/assests/images/pic6.png)
+
+
+
+
 
 
 # Getting Started with Create React App
