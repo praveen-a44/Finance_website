@@ -18,6 +18,9 @@ https://finance-managment01.web.app/
 ## Instructions section
 ![Finance_website](src/assests/images/pic4.png)
 
+## Total Money adding page
+![Finance_website](src/assests/images/Total.png)
+
 ## Budject page 
 ![Finance_website](src/assests/images/pic5.png)
 
