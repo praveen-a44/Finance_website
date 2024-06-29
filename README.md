@@ -5,6 +5,13 @@ This helps to provide some insights to users about how money is working, and it 
 ## live link:
 https://finance-managment01.web.app/
 
+# Features of the project
+1. Track the total money like a virtual wallet
+2. Track your travelling and investment expenditure
+3. Check out the daily positive quote about money in home page
+4. Create a total plan budget for the year
+5. Creating a sticky bills with the remainder
+
 # Working Prototype of the model
 ## Landing Page
 ![Finance_website](src/assests/images/pic1.png)
@@ -26,10 +33,6 @@ https://finance-managment01.web.app/
 
 ## Remainder page
 ![Finance_website](src/assests/images/pic6.png)
-
-
-
-
 
 
 # Getting Started with Create React App
