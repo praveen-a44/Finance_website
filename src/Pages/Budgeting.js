@@ -47,7 +47,7 @@ const CenteredForm = () => {
 let pdfBase64 = null;
   
 function GenerateInvoice() {
-
+  
   html2canvas(document.querySelector("#download_pdf")).then((canvas) => {
     const imgData = canvas.toDataURL('image/png', 1.0);
     const pdf = new jsPDF({

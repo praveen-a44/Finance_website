@@ -62,7 +62,6 @@
     height: 100vh !important; 
     background-color: #8748F8 !important;
     overflow: hidden;
-
   }
   body.no-scroll {
     overflow-y: hidden !important;

@@ -22,7 +22,8 @@ import borrom from '../assests/images/broom.png'
 import '../Styles/Travel.css'
 import snap from '../assests/images/capture.png'
 import Navbar1 from './Nav';
-
+import { ToastContainer, toast } from 'react-toastify';
+import { FaCircle } from 'react-icons/fa';
 function Travel() {
   const ref = createRef(null)
   const [image, takeScreenshot] = useScreenshot()
@@ -72,10 +73,8 @@ function Travel() {
   };
 
   const handleSubmit = async (event) => {
-
-
+    toast.success("Added to your history")
     event.preventDefault();
-    
     let travelHistory = JSON.parse(localStorage.getItem('travelHistory')) || [];
     const exists = travelHistory.some(data => JSON.stringify(data) === JSON.stringify(formData));
     
@@ -105,9 +104,20 @@ function Travel() {
     }, 2500);
    
   }
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInStatus = localStorage.getItem('isLoggedIn');
+
+    if (loggedInStatus === 'true') {
+      setIsLoggedIn(true);
+    }
+  }, []);
+  
   return (
     <>
     <Navbar1 />
+    <ToastContainer />
     <Container fluid className="p-3"> 
   <div className='clear' onClick={handleClick} title="clear Hitory">
     <img  src={borrom} alt="clear" height="40px" width="40px"/>
@@ -120,7 +130,6 @@ function Travel() {
               
             <div className="d-flex justify-content-between align-items-center mb-3 w-100">
             <span className="fw-bold">Add your total travel planning to allocate a budget</span>
-            <Button className="action_button" onClick={openModal}>Login</Button>
           </div>
             </div>
             <hr className="my-4"/>
@@ -135,14 +144,40 @@ function Travel() {
             <hr className="my-4"/>
               <Form.Label className="fw-bold">Travelling Continent:</Form.Label>
                 <Form.Select aria-label="Type" name="place" className="my-2 input_field drop" required="required" onChange={handleChange}>
-                  <option>Choose the Continent Name you wish to travel</option>
-                  <option value="Asia">Asia</option>
-                  <option value="South America">South America</option>
-                  <option value="North America">North America</option>
-                  <option value="Antarctica">Antarctica</option>
-                  <option value="Europe">Europe</option>
-                  <option value="Africa">Africa</option>
-                  <option value="Antartica">Antartica</option>
+                  
+              <option>Choose the Tourist Place you wish to visit</option>
+              <option value="Great Wall of China">Great Wall of China</option>
+              <option value="Taj Mahal">Taj Mahal</option>
+              <option value="Machu Picchu">Machu Picchu</option>
+              <option value="Grand Canyon">Grand Canyon</option>
+              <option value="Colosseum">Colosseum</option>
+              <option value="Eiffel Tower">Eiffel Tower</option>
+              <option value="Pyramids of Giza">Pyramids of Giza</option>
+              <option value="Statue of Liberty">Statue of Liberty</option>
+              <option value="Sydney Opera House">Sydney Opera House</option>
+              <option value="Christ the Redeemer">Christ the Redeemer</option>
+              <option value="Angkor Wat">Angkor Wat</option>
+              <option value="Petra">Petra</option>
+              <option value="Stonehenge">Stonehenge</option>
+              <option value="Santorini">Santorini</option>
+              <option value="Great Barrier Reef">Great Barrier Reef</option>
+              <option value="Niagara Falls">Niagara Falls</option>
+              <option value="Victoria Falls">Victoria Falls</option>
+              <option value="Mount Everest">Mount Everest</option>
+              <option value="Serengeti">Serengeti</option>
+              <option value="Galapagos Islands">Galapagos Islands</option>
+              <option value="Yellowstone National Park">Yellowstone National Park</option>
+              <option value="Matterhorn">Matterhorn</option>
+              <option value="Venice Canals">Venice Canals</option>
+              <option value="Amazon Rainforest">Amazon Rainforest</option>
+              <option value="Banff National Park">Banff National Park</option>
+              <option value="Iguazu Falls">Iguazu Falls</option>
+              <option value="Chichen Itza">Chichen Itza</option>
+              <option value="Dead Sea">Dead Sea</option>
+              <option value="Halong Bay">Halong Bay</option>
+              <option value="Table Mountain">Table Mountain</option>
+              <option value="Uluru">Uluru</option>
+
                 </Form.Select>
                 <Form.Label className="fw-bold">Expenditure:</Form.Label>
                 <Form.Control placeholder={"Add total expenditures of travel (approximately)"} type="number" name="expenditure" className="my-2 input_field" autoComplete="email" required="required" onChange={handleChange}/>
@@ -185,11 +220,16 @@ function Travel() {
         </Col>
         <Col md={4} lg={3}>
           <div className="sticky-top pt-md-3 pt-xl-4">
-            <Button type="submit" className="d-block w-100 action_button">Submit</Button>
+          <Button type="submit" className="d-block w-100 action_button">Submit</Button>
+          <div className="d-flex flex-row align-items-start justify-content-between">
+                  <span className="fw-light"  title="checked in">status: &nbsp;{isLoggedIn?<FaCircle id="circle_clr_green"/>:<FaCircle id="circle_clr_red"/>}
+                  </span>
+                  
+                </div>
             <Form.Group className="my-3">
               <Form.Label className="fw-bold">Balance:</Form.Label>
               <InputGroup className="my-1 flex-nowrap">
-                <Form.Control value={balance} name="taxRate" type="number" className="bg-white border input_field" id="balance" readOnly/>
+               {balance>0? <Form.Control value={balance} name="taxRate" type="number" className="bg-white border input_field" id="balance" readOnly/>:<Form.Control placeholder='You wanna check in to track' name="taxRate" type="number" className="bg-white border input_field" id="balance" readOnly/>}
               </InputGroup>
               <ul>
       {travelHistory.map((travel, index) => (

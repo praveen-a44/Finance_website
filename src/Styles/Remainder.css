@@ -54,7 +54,10 @@
 .reminder-note:nth-child(6n+6) {
   background: #e0e0e0;
 }
-
+.clear_btn{
+  position: relative;
+  margin-left: 20px;
+}
 @media (max-width: 768px) {
   .reminder-note {
     width: 100%;

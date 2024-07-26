@@ -13,11 +13,10 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
-import { FaGoogle,FaMobile } from 'react-icons/fa';
+import { FaCircle, FaGoogle,FaMobile } from 'react-icons/fa';
 import Modal from 'react-modal';
 import Confetti from 'react-confetti';
 import Navbar1 from './Nav';
-
 
 
 
@@ -63,7 +62,6 @@ export default function TotalMoney() {
     fname:'',
     email:'',
     job:''
-
   });
 
   const [loginData, setLoginData] = useState({
@@ -96,7 +94,7 @@ const handleLogout = () => {
   localStorage.removeItem('isLoggedIn');
   localStorage.removeItem('otherReminders');
   localStorage.removeItem('budgets');
-  
+  localStorage.removeItem('investmentplan');
   localStorage.removeItem('name');
   localStorage.removeItem('email');
 };
@@ -142,10 +140,11 @@ const handleLogin = async (event) => {
   };
   
 
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (event) => { 
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    localStorage.setItem(event.target.name, event.target.value);
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -194,6 +193,7 @@ const fetchUserData = async () => {
 
     if (response.data.status === 'ok') {
       setUserData(response.data.data);
+      
     } else {
     }
   } catch (error) {
@@ -275,7 +275,7 @@ const fetchUserData = async () => {
             <Row className="mt-4 justify-content-end">
               <Col lg={6}>
                 <div className="d-flex flex-row align-items-start justify-content-between">
-                  <span className="fw-bold">Type:
+                  <span className="fw-light"  title="checked in">status: &nbsp;{isLoggedIn?<FaCircle id="circle_clr_green"/>:<FaCircle id="circle_clr_red"/>}
                   </span>
                   
                 </div>
@@ -285,7 +285,7 @@ const fetchUserData = async () => {
                 <div className="d-flex flex-row align-items-start justify-content-between" style={{
                     fontSize: '1.125rem'
                   }}>
-                  <span className="fw-bold">Total:
+                  <span className="fw-bold">Total: &nbsp;{balance}
                   </span>
                   
                 </div>
@@ -298,7 +298,7 @@ const fetchUserData = async () => {
         </Col>
         <Col md={4} lg={3}>
           <div className="sticky-top pt-md-3 pt-xl-4">
-            <Button type="submit" className="d-block w-100 action_button">Submit</Button>
+            {isLoggedIn?"":<Button type="submit" className="d-block w-100 action_button">Submit</Button>}
          
             <Form.Group className="my-3">
               <Form.Label className="fw-bold">Balance:</Form.Label>

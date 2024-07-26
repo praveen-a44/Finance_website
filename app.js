@@ -1,9 +1,6 @@
 const express = require("express")
 const collection = require("./mongo")
 const cors = require('cors');
-
-
-
 const app = express()
 
 
@@ -16,7 +13,6 @@ app.get("/", cors(), async (req, res) => {
   try {
     const allUser = await collection.find({}).exec();
     res.send({ status: "ok", data: allUser });
-    
   } catch (error) {
     console.log(error);
   }

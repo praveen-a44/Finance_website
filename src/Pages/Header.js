@@ -14,7 +14,7 @@ function Header() {
       <motion.div
         initial={{ x: -400 }}
         animate={{ x: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 6.1 }}
       >
         <AnimationTitles title="Money is a tool Financial Wisdom is the craft" className="head"/>
         <p className="gray-90 mt-3 fs-5 small_txt">
@@ -34,7 +34,7 @@ function Header() {
       <motion.div
         initial={{ x: 400 }}
         animate={{ x: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 6.1 }}
         className="w-100 my-5"
       >
         <div className="cards">
