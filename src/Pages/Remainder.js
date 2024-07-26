@@ -116,13 +116,16 @@ const Reminder = () => {
         <Button type="submit"  style={{backgroundColor:'#8748F8',border:'none'}}>
           Set Reminder
         </Button>
+        
+        <Button onClick={handleClearAll} className='clear_btn' style={{backgroundColor:'#8748F8',border:'none'}}>
+        Clear All
+      </Button>
       </Form>
       </Card>
       </Col>
+      
       </Row>
-      <Button onClick={handleClearAll}  style={{backgroundColor:'#8748F8',border:'none'}}>
-        Clear All
-      </Button>
+      
       <br></br>
       <br></br>
 

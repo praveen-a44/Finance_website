@@ -114,3 +114,9 @@
   .drop{
     font-size: 13px;
   }
+  #circle_clr_green{
+    color: green !important;
+  }
+  #circle_clr_red{
+    color: tomato !important;
+  }

@@ -17,12 +17,18 @@
     background-color: #8748F8;
     border: none;
     position: absolute;
-    left:42px;
+    left:487px;
     top: 70px;
-    padding: 15px;
+    padding: 10.3px;
     width: 40px !important;
 }
 .download_btn :active{
     background-color: #8748F8 !important;
    
+}
+@media (max-width: 800px) {
+    .download_btn{
+        position: absolute;
+        left: 290px !important;
+    }
 }
